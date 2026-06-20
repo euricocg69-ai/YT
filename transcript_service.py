@@ -16,7 +16,7 @@ from youtube_transcript_api import YouTubeTranscriptApi
 
 OEMBED_ENDPOINT = "https://www.youtube.com/oembed"
 REQUEST_TIMEOUT_SECONDS = 10
-MAX_VIDEOS_PER_RUN = 15
+MAX_VIDEOS_PER_RUN = 30
 TRANSCRIPT_DELAY_SECONDS = 5
 BATCH_COOLDOWN_EVERY = 10
 BATCH_COOLDOWN_SECONDS = 30

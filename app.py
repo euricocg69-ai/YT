@@ -18,10 +18,9 @@ from transcript_service import (
 )
 
 
-WARNING_OVER_25_URLS = (
-    "Attention : vous avez saisi plus de 25 URL. Le traitement peut être plus "
-    "lent et YouTube peut limiter temporairement certaines requêtes. "
-    "L'application va traiter les vidéos une par une avec un délai de sécurité."
+LARGE_BATCH_MESSAGE = (
+    "Vous pouvez coller beaucoup d'URL. L'application les placera en file "
+    "d'attente et les traitera par lots pour limiter les blocages YouTube."
 )
 
 
@@ -154,7 +153,7 @@ def main() -> None:
 
     entered_url_count = count_entered_urls(raw_input)
     if entered_url_count > 25:
-        st.warning(WARNING_OVER_25_URLS)
+        st.info(LARGE_BATCH_MESSAGE)
 
     st.caption(
         f"Traitement par lots : {MAX_VIDEOS_PER_RUN} vidéos maximum par session, "

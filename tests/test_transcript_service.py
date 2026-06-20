@@ -323,6 +323,18 @@ class TranscriptServiceTest(unittest.TestCase):
         self.assertEqual(state["summary"]["successful"], 1)
         self.assertEqual(state["summary"]["unprocessed"], 1)
 
+    def test_large_url_import_is_not_limited_by_max_videos_per_run(self) -> None:
+        raw_input = "\n".join(
+            f"https://youtu.be/{index:011d}"
+            for index in range(service.MAX_VIDEOS_PER_RUN + 20)
+        )
+
+        state = service.create_run_state(raw_input)
+
+        self.assertEqual(service.MAX_VIDEOS_PER_RUN, 30)
+        self.assertEqual(state["summary"]["total"], 50)
+        self.assertEqual(state["summary"]["unprocessed"], 50)
+
 
 if __name__ == "__main__":
     unittest.main()

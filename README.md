@@ -19,7 +19,7 @@ streamlit run app.py
 
 - Collez une URL YouTube par ligne.
 - Cliquez sur `Générer le Markdown`.
-- L'application traite un lot limité de vidéos, une par une.
+- L'application traite jusqu'à 30 vidéos par session, une par une.
 - Les résultats sont sauvegardés progressivement dans `output/current_run.json`.
 - Cliquez sur `Reprendre le traitement` pour continuer sans retraiter les vidéos déjà réussies.
 - Téléchargez le fichier `.md` actuel, même si le traitement est partiel.
