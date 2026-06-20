@@ -19,8 +19,10 @@ streamlit run app.py
 
 - Collez une URL YouTube par ligne.
 - Cliquez sur `Générer le Markdown`.
-- Vérifiez les résultats vidéo par vidéo.
-- Téléchargez le fichier `.md` généré.
+- L'application traite un lot limité de vidéos, une par une.
+- Les résultats sont sauvegardés progressivement dans `output/current_run.json`.
+- Cliquez sur `Reprendre le traitement` pour continuer sans retraiter les vidéos déjà réussies.
+- Téléchargez le fichier `.md` actuel, même si le traitement est partiel.
 
 Formats acceptés :
 
@@ -38,5 +40,7 @@ traitement même si une vidéo échoue.
 - Aucun compte, aucune base de données et aucune clé d'API ne sont nécessaires.
 - Les titres et chaînes sont récupérés via l'endpoint oEmbed public de YouTube.
 - Les transcriptions sont récupérées avec `youtube-transcript-api`.
-- Le traitement est séquentiel avec un court délai entre deux vidéos pour
+- Le traitement est séquentiel avec un délai entre deux vidéos pour
   limiter les risques de throttling.
+- En cas de limitation temporaire par YouTube, les résultats déjà récupérés
+  restent sauvegardés et le traitement peut être repris après une pause.
